@@ -127,7 +127,7 @@ int main(){ // Main Function
 		if(choice==1){
 			printf("Please Enter Your Name : "); // Getting Player Name
 			gets(pname);
-			Play(1,board,pname); // Game begging call
+			Play(1,board,pname); // Game begining call
 		}
 		else if(choice==2) break;
 		else { printf("Wrong Choice. Enter a valid one please.\n"); getchar(); system("clear"); }
