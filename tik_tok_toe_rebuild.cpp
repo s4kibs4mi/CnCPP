@@ -1,9 +1,11 @@
+// Source Code Begins Here
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<time.h>
 
-void Initial(char board[3][3]){
+void Initial(char board[3][3]){ // Function to Initialize board with value 1,2,3....9
 	int i,j,k = 1;
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
@@ -13,7 +15,7 @@ void Initial(char board[3][3]){
 	}
 }
 
-void View(char board[3][3]){
+void View(char board[3][3]){ // Function to View to board
 	for(int i=0;i<3;i++){
 		for(int j=0;j<3;j++)
 			printf("%c\t",board[i][j]);
@@ -21,7 +23,7 @@ void View(char board[3][3]){
 	}
 }
 
-bool WinningCheck(char board[3][3],char mark){
+bool WinningCheck(char board[3][3],char mark){ // Checking Winning Conditions
 	if(board[0][0]==mark && board[0][1]==mark && board[0][2]==mark) return true;
 	else if(board[1][0]==mark && board[1][1]==mark && board[1][2]==mark) return true;
 	else if(board[2][0]==mark && board[2][1]==mark && board[2][2]==mark) return true;
@@ -33,7 +35,7 @@ bool WinningCheck(char board[3][3],char mark){
 	return false;
 }
 
-int TieCheck(char board[3][3]){
+int TieCheck(char board[3][3]){ // Function to Check Tie Case
 	int i,j,k = 1;
 	for(i=0;i<3;i++){
 		for(j=0;j<3;j++){
@@ -44,7 +46,7 @@ int TieCheck(char board[3][3]){
 	return 0;
 }
 
-bool AssignValue(char board[3][3],int value,char mark){
+bool AssignValue(char board[3][3],int value,char mark){ // Function to value assigning validity
 	if(value==1 && board[0][0]=='1') { board[0][0] = mark; return false; }
 	else if(value==2 && board[0][1]=='2') { board[0][1] = mark; return false; }
 	else if(value==3 && board[0][2]=='3') { board[0][2] = mark; return false; }
@@ -57,7 +59,7 @@ bool AssignValue(char board[3][3],int value,char mark){
 	return true;
 }
 
-int Play(int run,char board[3][3],char pname[]){
+int Play(int run,char board[3][3],char pname[]){ // TIK TOK TOE Begins
 	int ch;
 	bool ok = true;
 	run = TieCheck(board);
@@ -109,7 +111,7 @@ int Play(int run,char board[3][3],char pname[]){
 	}
 }
 
-int main(){
+int main(){ // Main Function
 	srand(time(NULL));
 	char pname[30];
 	char board[3][3];
@@ -123,12 +125,14 @@ int main(){
 		scanf("%d",&choice);
 		getchar();
 		if(choice==1){
-			printf("Please Enter Your Name : ");
+			printf("Please Enter Your Name : "); // Getting Player Name
 			gets(pname);
-			Play(1,board,pname);
+			Play(1,board,pname); // Game begging call
 		}
 		else if(choice==2) break;
 		else { printf("Wrong Choice. Enter a valid one please.\n"); getchar(); system("clear"); }
 	}
 	return 0;
 }
+
+// Source Code Ends Here
