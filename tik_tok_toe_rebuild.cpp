@@ -46,7 +46,7 @@ int TieCheck(char board[3][3]){ // Function to Check Tie Case
 	return 0;
 }
 
-bool AssignValue(char board[3][3],int value,char mark){ // Function to value assigning validity
+bool AssignValue(char board[3][3],int value,char mark){ // Function to checking value assigning validity
 	if(value==1 && board[0][0]=='1') { board[0][0] = mark; return false; }
 	else if(value==2 && board[0][1]=='2') { board[0][1] = mark; return false; }
 	else if(value==3 && board[0][2]=='3') { board[0][2] = mark; return false; }
