@@ -28,7 +28,7 @@ class Integer{
 				carry = carry / 10;
 				i++;
 			}
-			while(carry > 10){
+			while(carry > 9){
 				c.push_back((carry % 10) + 48);
 				carry = carry / 10;
 			}
