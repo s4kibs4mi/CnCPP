@@ -13,6 +13,7 @@ class Integer{
 		string c;
 	public:
 		string Add(string a,string b){
+			c.clear();
 			reverse(a.begin(),a.end());
 			reverse(b.begin(),b.end());
 			if(a.length() < b.length())
@@ -39,9 +40,6 @@ class Integer{
 };
 
 int main(){
-	string a,b;
-	Integer Int;
-	cin >> a >> b;
-	cout << Int.Add(a,b)<< endl;
+	
 	return 0;
 }
