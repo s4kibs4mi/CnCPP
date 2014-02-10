@@ -74,8 +74,8 @@ class Integer{
 				carry = x / 10;
 				i++;
 			}
-			if(!flag) c.push_back('-');
 			while(c[c.length()-1]=='0' && c.length() > 1) c.erase(c.length()-1,1);
+			if(!flag) c.push_back('-');
 			reverse(c.begin(),c.end());
 			return c;
 		}
