@@ -1,4 +1,7 @@
-// Interger Class for performing Big Integer Taskes such as Addition,Substruction,Multiplication,Division etc
+// [+] Interger Class for performing Big Integer Taskes such as Addition,Substruction,Multiplication,Division etc
+// [+] Coded in C++ using C++ Standard library
+// [+] Coding : Sakib Sami
+// [+] Email : s4kibs4mi@gmail.com
 
 #include<iostream>
 #include<string>
@@ -27,7 +30,7 @@ class Integer{
 			}
 			return "same";
 		}
-		
+
 		// Method to Add two Integer number
 		string Add(string a,string b){
 			c.clear();
@@ -37,7 +40,7 @@ class Integer{
 				swap(a,b);
 			while(int(b.length()) < int(a.length()))
 				b.push_back('0');
-				
+
 			int i = 0,carry = 0;
 			while(a[i]){
 				carry = carry + a[i]-48 + b[i]-48;
@@ -53,7 +56,7 @@ class Integer{
 			reverse(c.begin(),c.end());
 			return c;
 		}
-		
+
 		// Method to Substruct within two Integer number
 		string Minus(string a,string b){
 			c.clear();
@@ -79,7 +82,24 @@ class Integer{
 			reverse(c.begin(),c.end());
 			return c;
 		}
-	
+
+		// Method for multiplication
+		string M(string a,long int b){
+			c.clear();
+			long int m = 0,i;
+			reverse(a.begin(),a.end());
+			for(i = 0; a[i] ; i++){
+				m = m + b * (a[i]-'0');
+				c.push_back((m%10) + 48);
+				m /= 10;
+			}
+			while(m > 0){
+				c.push_back((m%10) + 48);
+				m /= 10;
+			}
+			reverse(c.begin(),c.end());
+			return c;
+		}
 };
 
 int main(){
