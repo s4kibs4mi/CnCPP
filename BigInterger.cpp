@@ -30,7 +30,33 @@ class Integer{
 			}
 			return "same";
 		}
-
+		
+		// Method to Findout Digits of a number
+		long int Digit(long int n){
+			long int i = 0;
+			for(;n > 0; i++) n /= 10;
+			return i;
+		}
+		
+		// Method to Convert string to number
+		long int s2li(string a){
+			long int n = 0;
+			reverse(a.begin(),a.end());
+			for(int i=0; a[i]; i++) n = ( n*10 ) + (a[i]-48);
+			return n;
+		}
+		
+		// Method to Convert number to string
+		string li2s(long int a){
+			c.clear();
+			while(a > 0){
+				c.push_back((a%10)+48);
+				a /= 10;
+			}
+			reverse(c.begin(),c.end());
+			return c;
+		}
+		
 		// Method to Add two Integer number
 		string Add(string a,string b){
 			c.clear();
@@ -98,6 +124,25 @@ class Integer{
 				m /= 10;
 			}
 			reverse(c.begin(),c.end());
+			return c;
+		}
+		
+		// Method for division
+		string D(char ch,string a,long int b){
+			c.clear();
+			long int Len = a.length(),mod = 0,d = Digit(b),V = 0,i;
+			i = 0;
+			while(i < d || V < b){ V = (V * 10) + (a[i]-48); i++; }
+			while(i < Len +1){
+
+				c.push_back((V/b)+48);
+				mod = V % b;
+				V = (mod*10) + (a[i]-48);
+				if(b > V) { i++; V = (V*10) + (a[i]-48); if(i!=Len+1) c.push_back('0'); }
+				i++;
+			}
+			if(c.empty()) c = "0";
+			if(ch=='m') c = li2s(mod);
 			return c;
 		}
 };
