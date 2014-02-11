@@ -145,6 +145,15 @@ class Integer{
 			if(ch=='m') c = li2s(mod);
 			return c;
 		}
+		
+		// Method to Generate Fibonacci numbers
+		void F(string a,string b,long unsigned int n){
+	    	if(n){
+				cout << a << "\n";
+				c = Add(a,b);
+				F(b,c,--n);
+			}
+		}
 };
 
 int main(){
