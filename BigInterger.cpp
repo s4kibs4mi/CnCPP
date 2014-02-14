@@ -1,4 +1,5 @@
 // [+] Interger Class for performing Big Integer Taskes such as Addition,Substruction,Multiplication,Division etc
+// [+] And some usefull Functions
 // [+] Coded in C++ using C++ Standard library
 // [+] Coding : Sakib Sami
 // [+] Email : s4kibs4mi@gmail.com
@@ -8,6 +9,7 @@
 #include<cstdio>
 #include<cstdlib>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
@@ -30,14 +32,14 @@ class Integer{
 			}
 			return "same";
 		}
-		
+
 		// Method to Findout Digits of a number
 		long int Digit(long int n){
 			long int i = 0;
 			for(;n > 0; i++) n /= 10;
 			return i;
 		}
-		
+
 		// Method to Convert string to number
 		long int s2li(string a){
 			long int n = 0;
@@ -45,10 +47,11 @@ class Integer{
 			for(int i=0; a[i]; i++) n = ( n*10 ) + (a[i]-48);
 			return n;
 		}
-		
+
 		// Method to Convert number to string
 		string li2s(long int a){
 			c.clear();
+			if(a==0){ c.push_back(a+48); return c; }
 			while(a > 0){
 				c.push_back((a%10)+48);
 				a /= 10;
@@ -56,7 +59,7 @@ class Integer{
 			reverse(c.begin(),c.end());
 			return c;
 		}
-		
+
 		// Method to Add two Integer number
 		string Add(string a,string b){
 			c.clear();
@@ -126,7 +129,7 @@ class Integer{
 			reverse(c.begin(),c.end());
 			return c;
 		}
-		
+
 		// Method for division
 		string D(char ch,string a,long int b){
 			c.clear();
@@ -145,14 +148,81 @@ class Integer{
 			if(ch=='m') c = li2s(mod);
 			return c;
 		}
-		
+
 		// Method to Generate Fibonacci numbers
 		void F(string a,string b,long unsigned int n){
 	    	if(n){
-				cout << a << "\n";
+				cout << a << endl;
 				c = Add(a,b);
 				F(b,c,--n);
 			}
+		}
+		
+		// Method to Convert number from decimal to any other base
+		string D2All(string temp,long int base){
+			string conv;
+			bool flag;
+			long int numb,res,i;
+			if(temp=="1") return "1";
+			if(temp=="0") return "0";
+			while(s2li(temp) >= base){
+				numb = 0, res = 0, i = 0;
+				while(numb <= base && temp[i])
+					numb = (numb*10) + (temp[i++]-48);
+				while(temp[i] || numb >= base){
+					res = (res*10) + (numb/base);
+					numb = numb%base;
+					flag = false;
+					while(numb <= base && temp[i]){
+						numb = (numb*10) + (temp[i++]-48);
+						if(flag) res = (res*10);
+						flag = true;
+					}
+				}
+				if(flag && numb < base)
+					res = (res*10);
+				if(numb >= 0 && numb <= 9)
+					conv.push_back(numb+48);
+				else
+					conv.push_back((numb%10)+65);
+				temp = li2s(res);
+			}
+			if(res != 0 && res < base){
+				if(res >= 0 && res <= 9)
+					conv.push_back(res+48);
+				else
+					conv.push_back((res%10)+65);
+			}
+			reverse(conv.begin(),conv.end());
+			return conv;
+		}
+		
+		// Method to Convert number from Any Base to Decimal
+		string All2D(string temp, int base){
+			string dec;
+			long int i;
+			reverse(temp.begin(),temp.end());
+			i = 0;
+			while(temp[i]){
+				if(temp[i] >=65){
+					
+				}
+				else
+				i++;
+			}
+			
+			return dec;
+		}
+		
+		// Method to Check Palindrome
+		bool IsPalindrome(string s){
+			long int i, n = s.length(),n2;
+			n2 = n/2;
+			for(i = 0; i <= n2; i++){
+				if(s[i] != s[n-i-1])
+					return false;
+			}
+			return true;
 		}
 };
 
