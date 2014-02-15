@@ -33,6 +33,15 @@ class Integer{
 			return "same";
 		}
 
+		// Method to make power
+		string Power(long int base,long int power){
+			string res = "1";
+			while(power--){
+				res = M(res,base);
+			}
+			return res;
+		}
+		
 		// Method to Findout Digits of a number
 		long int Digit(long int n){
 			long int i = 0;
@@ -198,19 +207,22 @@ class Integer{
 		}
 		
 		// Method to Convert number from Any Base to Decimal
-		string All2D(string temp, int base){
+		string All2D(string temp, long int base){
 			string dec;
 			long int i;
 			reverse(temp.begin(),temp.end());
 			i = 0;
 			while(temp[i]){
-				if(temp[i] >=65){
-					
+				if(temp[i] != '0'){
+					if(temp[i] >= 65){
+						dec = Add(dec,M(Power(base,i),((temp[i]%65)+10)));
+					}
+					else{
+						dec = Add(dec,M(Power(base,i),((temp[i]-48))));
+					}
 				}
-				else
 				i++;
 			}
-			
 			return dec;
 		}
 		
