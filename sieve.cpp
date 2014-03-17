@@ -4,7 +4,7 @@
 
 #define MAX 20000000 // maximum number for prime check
 #define LMT 10000 // square root of maximum number
-#define ifc(n) (flag[n>>6]&(1<<((n>>1)&31)))
+#define ifc(n) (flag[n>>6]&(1<<((n>>1)&31))) // !ifc() means prime
 #define isc(n) (flag[n>>6]|=(1<<((n>>1)&31)))
 
 using namespace std;
