@@ -89,11 +89,9 @@ public:
     // method to generate fibonacci numbers
     vector <string> F(string a,string b,long unsigned int n){
         vector <string> f;
-        string c;
         if(n){
             f.push_back(a);
-            c = addition(a,b);
-            F(b,c,--n);
+            F(b,addition(a,b),--n);
         }
         return f;
     }
