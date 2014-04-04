@@ -101,13 +101,15 @@ public:
 
     // method to generate fibonacci numbers
     vector <string> Fibonacci(string a,string b,long unsigned int n){
-        vector <string> f;
         if(n){
-            f.push_back(a);
+            fibonacci.push_back(a);
             Fibonacci(b,addition(a,b),--n);
         }
-        return f;
+        return fibonacci;
     }
+    
+private:
+    vector <string> fibonacci;
 };
 
 #endif // BigInteger_H
