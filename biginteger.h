@@ -14,6 +14,7 @@ using namespace std;
     implemented functions :
     addition,substraction,fibonacci numbers
     to work with this add "biginteger.h" in your code
+    and keep biginteger.h file in root of your program
 */
 
 class BigInteger{
