@@ -20,11 +20,9 @@ class BigInteger{
 public:
     // method to findout the greater number
     int BigIntFind(string a,string b){
-        if(a.length() < b.length()) swap(a,b);
-        string d = b;
-        reverse(b.begin(),b.end());
-        while(b.length() < a.length()) b.push_back('0');
-        reverse(b.begin(),b.end());
+        if(a.length() < b.length())
+            return 1;
+        else if(a.length() > b.length()) return -1;
         int i = 0;
         while(a[i]){
             if(a[i] > b[i]) return -1;
@@ -62,36 +60,50 @@ public:
 
     // method for substraction
     string substract(string a,string b){
+        if(a == b)
+            return "0";
         string c;
-        bool flag = true;
-        if(BigIntFind(a,b)==1){
+        bool check = false;
+        if(BigIntFind(a,b) == 1){
+            check = true;
             swap(a,b);
-            flag = false;
         }
         reverse(a.begin(),a.end());
         reverse(b.begin(),b.end());
-        while(b.length() < a.length()) b.push_back('0');
-        int i = 0,carry = 0,x = 0;
+
+        int lenA = a.length();
+        while((int) b.length() < lenA)
+            b.push_back('0');
+
+        int i = 0 , carry = 0;
         while(a[i]){
-            if(b[i] > a[i]) x = (a[i]-48) + 10;
-            else x = a[i]-48;
-            carry = x-(carry + (b[i]-48));
-            c.push_back(carry+48);
-            carry = x / 10;
+            if(a[i] < carry + b[i]){
+                int d = (a[i]-48) + (1*10);
+                c.push_back((d - ((b[i]-48)+carry)) + 48);
+                carry = 1;
+            }
+            else{
+                c.push_back(((a[i]-48) - ((b[i]-48)+carry)) + 48);
+                carry = 0;
+            }
             i++;
         }
-        while(c[c.length()-1]=='0' && c.length() > 1) c.erase(c.length()-1,1);
-        if(!flag) c.push_back('-');
+
+        while(c.length() > 0 && c[c.length()-1] == '0')
+            c.resize(c.length()-1);
+
+        if(check)
+            c.push_back('-');
         reverse(c.begin(),c.end());
         return c;
     }
 
     // method to generate fibonacci numbers
-    vector <string> F(string a,string b,long unsigned int n){
+    vector <string> Fibonacci(string a,string b,long unsigned int n){
         vector <string> f;
         if(n){
             f.push_back(a);
-            F(b,addition(a,b),--n);
+            Fibonacci(b,addition(a,b),--n);
         }
         return f;
     }
